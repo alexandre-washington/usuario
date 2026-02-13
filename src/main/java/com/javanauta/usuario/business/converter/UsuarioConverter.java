@@ -98,4 +98,36 @@ public class UsuarioConverter {
                 .build();
     }
 
+    public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario entity) {
+//---- original do vídeo da Javanauta não funcionou ------------------------------------------------
+//        return UsuarioDTO.builder()
+//                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
+//                .id(entity.getId())
+//                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
+//                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
+//                .enderecos(entity.getEnderecos())
+//                .telefones(entity.getTelefones())
+//                .build();
+//--------------------------------------------------------------------------------------------------
+//        UsuarioDTO dto = UsuarioDTO.builder()
+//                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
+//                .id(entity.getId())
+//                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
+//                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
+//                .enderecos(paraListaEnderecoDTO(entity.getEnderecos()))
+//                .telefones(paraListaTelefoneDTO(entity.getTelefones()))
+//                .build();
+//        return paraUsuario(dto);
+//--------------------------------------------------------------------------------------------------
+        return paraUsuario(
+                UsuarioDTO.builder()
+                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
+                .id(entity.getId())
+                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
+                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
+                .enderecos(paraListaEnderecoDTO(entity.getEnderecos()))
+                .telefones(paraListaTelefoneDTO(entity.getTelefones()))
+                .build()
+        );
+    }
 }
