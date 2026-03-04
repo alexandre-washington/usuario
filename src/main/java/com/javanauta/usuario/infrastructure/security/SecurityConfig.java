@@ -37,6 +37,14 @@ public class SecurityConfig {
         // Cria uma instância do JwtRequestFilter com JwtUtil e UserDetailsService
         JwtRequestFilter jwtRequestFilter = new JwtRequestFilter(jwtUtil, userDetailsService);
 
+//        http
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers(HttpMethod.POST, "/usuario/login").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/usuario").permitAll()
+//                        .requestMatchers("/auth").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+
         http
                 .csrf(AbstractHttpConfigurer::disable) // Desativa proteção CSRF para APIs REST (não aplicável a APIs que não mantêm estado)
                 .authorizeHttpRequests(authorize -> authorize
