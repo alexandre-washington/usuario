@@ -153,6 +153,7 @@ public class UsuarioConverter {
                 .numero(dto.getNumero() != null ? dto.getNumero() : entity.getNumero())
                 .build();
     }
+<<<<<<< HEAD
 
     public Endereco paraEnderecoEntity(EnderecoDTO dto, Long idUsuario) {
         return Endereco.builder()
@@ -173,4 +174,6 @@ public class UsuarioConverter {
                 .usuario_id(idUsuario)
                 .build();
     }
+=======
+>>>>>>> fd9ec5df919c3bf8973b5c0e3576decc4c29552a
 }

@@ -4,6 +4,10 @@ import com.javanauta.usuario.business.UsuarioService;
 import com.javanauta.usuario.business.dto.EnderecoDTO;
 import com.javanauta.usuario.business.dto.TelefoneDTO;
 import com.javanauta.usuario.business.dto.UsuarioDTO;
+<<<<<<< HEAD
+=======
+import com.javanauta.usuario.infrastructure.entity.Usuario;
+>>>>>>> fd9ec5df919c3bf8973b5c0e3576decc4c29552a
 import com.javanauta.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -64,6 +68,7 @@ public class UsuarioController {
                                                         @RequestParam("id") Long id) {
         return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
     }
+<<<<<<< HEAD
 
     @PostMapping("/endereco")
     public ResponseEntity<EnderecoDTO> cadastraEndereco(@RequestBody EnderecoDTO dto,
@@ -76,4 +81,6 @@ public class UsuarioController {
                                                         @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
     }
+=======
+>>>>>>> fd9ec5df919c3bf8973b5c0e3576decc4c29552a
 }

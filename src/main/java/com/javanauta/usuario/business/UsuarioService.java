@@ -123,6 +123,7 @@ public class UsuarioService {
 
         return usuarioConverter.paraTelefoneDTO(telefoneRepository.save(telefone));
     }
+<<<<<<< HEAD
 
     public EnderecoDTO cadastraEndereco(String token, EnderecoDTO dto) {
         String email = jwtUtil.extrairEmailToken(token.substring(7));
@@ -148,4 +149,6 @@ public class UsuarioService {
         Telefone telefone  = usuarioConverter.paraTelefoneEntity(dto, usuario.getId());
         return usuarioConverter.paraTelefoneDTO(telefoneRepository.save(telefone));
     }
+=======
+>>>>>>> fd9ec5df919c3bf8973b5c0e3576decc4c29552a
 }
