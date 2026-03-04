@@ -123,4 +123,29 @@ public class UsuarioService {
 
         return usuarioConverter.paraTelefoneDTO(telefoneRepository.save(telefone));
     }
+
+    public EnderecoDTO cadastraEndereco(String token, EnderecoDTO dto) {
+        String email = jwtUtil.extrairEmailToken(token.substring(7));
+
+        // .orElseThrow() obrigatório porque JPA atribui ao findByEmail() um Optional
+        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
+                new ResourceNotFoundException("E-mail não localizado: " + email));
+
+        Endereco endereco = usuarioConverter.paraEnderecoEntity(dto, usuario.getId());
+
+        //---- Jeito longo:
+        // Endereco enderecoEntity = enderecoRepository.save(endereco);
+        // return usuarioConverter.paraEnderecoDTO(enderecoEntity);
+        //-----------------
+
+        return usuarioConverter.paraEnderecoDTO(enderecoRepository.save(endereco));
+    }
+
+    public TelefoneDTO cadastraTelefone(String token, TelefoneDTO dto) {
+        String email = jwtUtil.extrairEmailToken(token.substring(7));
+        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
+                new ResourceNotFoundException("E-mail não localizado: " + email));
+        Telefone telefone  = usuarioConverter.paraTelefoneEntity(dto, usuario.getId());
+        return usuarioConverter.paraTelefoneDTO(telefoneRepository.save(telefone));
+    }
 }
